@@ -16,8 +16,8 @@
 package syscoin
 
 import (
-	"testing"
 	"github.com/pborman/uuid"
+	"testing"
 )
 
 func TestGetBTCBlockHeight(t *testing.T) {
@@ -63,7 +63,7 @@ func TestGetBlock(t *testing.T) {
 
 func TestGetTransaction(t *testing.T) {
 	//f1ce2117e20fc64bfd314941ccde86a7d86203b53889550defb9c5a5035b55ed
-	raw, err := tw.GetTransaction("f2b118e53dd773a36b8fe22e2327f0584d071ad099ca60e0e0f214236d24c0b9")
+	raw, err := tw.GetTransaction("1a11160cdbddf1e7596c2f159da584122b82f3a374020b26aedf37a8b1393c55")
 	if err != nil {
 		t.Errorf("GetTransaction failed unexpected error: %v\n", err)
 		return

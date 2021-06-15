@@ -120,16 +120,18 @@ func TestTransfer(t *testing.T) {
 
 	targets := []string{
 		"sys1q3j7flmvnvhfqvyr0r05vuggch85hyzfuqm5phf",
-		"sys1q4f5e8e9kddwjnmvl5aasmfjeze08tr734ttu0x",
-		"sys1q6tyx66v3fn9u7y0fql5n68v6w85k0pp8kvtyae",
-		"sys1q6uw847ehch0pccu2jp2tm8kw9qcjdzngczqltr",
-		"sys1qa3l4tg3sym03j7jaxrg0q4lsjwswpcdeap6c0n",
-		"sys1qarhyu63f3shnaylssjvsc5msqxqwmvaffuj75z",
-		"sys1qcc9k27yrf2j2l3n5x7hszex6gquze5a3jrl2d4",
-		"sys1qffka39qdc8sygz57k0rhyvjah3r96cr4k6vmm6",
-		"sys1qkkcfyy8eltg20z3l2w2veshat2l633uljq9n4w",
-		"sys1qmnuvqen3y6cx9k0ufw6y9d0vv59djapnpnwjaw",
-		"sys1qsfxzv2tdq8wqhhc806zrm8qkqnpqay3hnmmaen",
+		//"sys1q4f5e8e9kddwjnmvl5aasmfjeze08tr734ttu0x",
+		//"sys1q6tyx66v3fn9u7y0fql5n68v6w85k0pp8kvtyae",
+		//"sys1q6uw847ehch0pccu2jp2tm8kw9qcjdzngczqltr",
+		//"sys1qa3l4tg3sym03j7jaxrg0q4lsjwswpcdeap6c0n",
+		//"sys1qarhyu63f3shnaylssjvsc5msqxqwmvaffuj75z",
+		//"sys1qcc9k27yrf2j2l3n5x7hszex6gquze5a3jrl2d4",
+		//"sys1qffka39qdc8sygz57k0rhyvjah3r96cr4k6vmm6",
+		//"sys1qkkcfyy8eltg20z3l2w2veshat2l633uljq9n4w",
+		//"sys1qmnuvqen3y6cx9k0ufw6y9d0vv59djapnpnwjaw",
+		//"sys1qsfxzv2tdq8wqhhc806zrm8qkqnpqay3hnmmaen",
+
+		//"sys1qmrp0fyj947v2n9teqvahxwz764tuy9k6rxr3ls",
 	}
 
 	tm := testInitWalletManager()
@@ -139,7 +141,7 @@ func TestTransfer(t *testing.T) {
 	testGetAssetsAccountBalance(tm, walletID, accountID)
 
 	for _, to := range targets {
-		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "5", "", nil)
+		rawTx, err := testCreateTransactionStep(tm, walletID, accountID, to, "10", "", nil)
 		if err != nil {
 			return
 		}
