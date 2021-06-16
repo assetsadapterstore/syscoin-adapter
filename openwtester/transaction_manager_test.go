@@ -16,6 +16,9 @@
 package openwtester
 
 import (
+	"github.com/astaxie/beego/config"
+	"github.com/blocktree/openwallet/v2/openw"
+	"path/filepath"
 	"testing"
 
 	"github.com/blocktree/openwallet/v2/log"
@@ -48,4 +51,33 @@ func TestWalletManager_GetEstimateFeeRate(t *testing.T) {
 		return
 	}
 	log.Std.Info("feeRate: %s %s/%s", feeRate, coin.Symbol, unit)
+}
+
+
+func TestGetAddressVerify(t *testing.T) {
+	symbol := "SYS"
+	assetsMgr, err := openw.GetAssetsAdapter(symbol)
+	if err != nil {
+		log.Error(symbol, "is not support")
+		return
+	}
+	//读取配置
+	absFile := filepath.Join(configFilePath, symbol+".ini")
+
+	c, err := config.NewConfig("ini", absFile)
+	if err != nil {
+		return
+	}
+	assetsMgr.LoadAssetsConfig(c)
+	addrDec := assetsMgr.GetAddressDecoderV2()
+
+	flag := addrDec.AddressVerify("0x4402a2969da0689a0e6f5fbad8be930430b4ad63af25f3c93dbd03bb40908d08")
+	log.Infof("flag: %v, expect: false", flag)
+
+	flag = addrDec.AddressVerify("96377909058287e15ae2a3df5b77dc0abcd41136bdf8f919d5ffb412777ae475")
+	log.Infof("flag: %v, expect: false", flag)
+
+	flag = addrDec.AddressVerify("sys1q3j7flmvnvhfqvyr0r05vuggch85hyzfuqm5phf")
+	log.Infof("flag: %v, expect: true", flag)
+
 }
